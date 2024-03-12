@@ -7,9 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E24C0B32B9EF9F900B95FF5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E24C0B22B9EF9F900B95FF5 /* User.swift */; };
+		6E24C0B62B9EFD8100B95FF5 /* VetDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E24C0B52B9EFD8100B95FF5 /* VetDetails.swift */; };
+		6E24C0B82B9F178B00B95FF5 /* UserProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E24C0B72B9F178B00B95FF5 /* UserProfilePageViewController.swift */; };
+		6E24C0BB2B9F1F9C00B95FF5 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E24C0BA2B9F1F9C00B95FF5 /* Status.swift */; };
+		6E24C0BD2BA0508E00B95FF5 /* BookingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E24C0BC2BA0508E00B95FF5 /* BookingPageViewController.swift */; };
+		6E24C0BF2BA056A500B95FF5 /* VetDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E24C0BE2BA056A500B95FF5 /* VetDetailsViewController.swift */; };
+		6E24C0C12BA056F500B95FF5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E24C0C02BA056F500B95FF5 /* HomeViewController.swift */; };
+		6E24C0C32BA0574500B95FF5 /* Home2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E24C0C22BA0574500B95FF5 /* Home2ViewController.swift */; };
+		6E24C0C52BA057A900B95FF5 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E24C0C42BA057A900B95FF5 /* MainTabBarController.swift */; };
+		6E24C0C72BA0582D00B95FF5 /* MyRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E24C0C62BA0582D00B95FF5 /* MyRequestViewController.swift */; };
+		6E24C0C92BA0587600B95FF5 /* FavouriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E24C0C82BA0587600B95FF5 /* FavouriteViewController.swift */; };
+		6E24C0CD2BA072BE00B95FF5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E24C0CC2BA072BE00B95FF5 /* NetworkManager.swift */; };
+		6E24C0CF2BA0733700B95FF5 /* SignInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E24C0CE2BA0733700B95FF5 /* SignInResponse.swift */; };
+		6E24C0D12BA0736500B95FF5 /* WelcomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E24C0D02BA0736500B95FF5 /* WelcomePageViewController.swift */; };
+		6E24C0D32BA073C400B95FF5 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E24C0D22BA073C400B95FF5 /* SignInViewController.swift */; };
+		6E24C0D52BA0743500B95FF5 /* SignUpVetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E24C0D42BA0743500B95FF5 /* SignUpVetViewController.swift */; };
+		6E24C0D72BA0746F00B95FF5 /* SignUpUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E24C0D62BA0746F00B95FF5 /* SignUpUserViewController.swift */; };
 		FC5C23272B9EE47500AD3E86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5C23262B9EE47500AD3E86 /* AppDelegate.swift */; };
 		FC5C23292B9EE47500AD3E86 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5C23282B9EE47500AD3E86 /* SceneDelegate.swift */; };
-		FC5C232B2B9EE47500AD3E86 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5C232A2B9EE47500AD3E86 /* ViewController.swift */; };
+		FC5C232B2B9EE47500AD3E86 /* VetProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5C232A2B9EE47500AD3E86 /* VetProfilePageViewController.swift */; };
 		FC5C23302B9EE47600AD3E86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC5C232F2B9EE47600AD3E86 /* Assets.xcassets */; };
 		FC5C23332B9EE47600AD3E86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC5C23312B9EE47600AD3E86 /* LaunchScreen.storyboard */; };
 		FC5C233C2B9EE4B000AD3E86 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = FC5C233B2B9EE4B000AD3E86 /* Kingfisher */; };
@@ -21,10 +38,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6E24C0B22B9EF9F900B95FF5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		6E24C0B52B9EFD8100B95FF5 /* VetDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VetDetails.swift; sourceTree = "<group>"; };
+		6E24C0B72B9F178B00B95FF5 /* UserProfilePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePageViewController.swift; sourceTree = "<group>"; };
+		6E24C0BA2B9F1F9C00B95FF5 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		6E24C0BC2BA0508E00B95FF5 /* BookingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingPageViewController.swift; sourceTree = "<group>"; };
+		6E24C0BE2BA056A500B95FF5 /* VetDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VetDetailsViewController.swift; sourceTree = "<group>"; };
+		6E24C0C02BA056F500B95FF5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		6E24C0C22BA0574500B95FF5 /* Home2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home2ViewController.swift; sourceTree = "<group>"; };
+		6E24C0C42BA057A900B95FF5 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		6E24C0C62BA0582D00B95FF5 /* MyRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRequestViewController.swift; sourceTree = "<group>"; };
+		6E24C0C82BA0587600B95FF5 /* FavouriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteViewController.swift; sourceTree = "<group>"; };
+		6E24C0CC2BA072BE00B95FF5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		6E24C0CE2BA0733700B95FF5 /* SignInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponse.swift; sourceTree = "<group>"; };
+		6E24C0D02BA0736500B95FF5 /* WelcomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageViewController.swift; sourceTree = "<group>"; };
+		6E24C0D22BA073C400B95FF5 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		6E24C0D42BA0743500B95FF5 /* SignUpVetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVetViewController.swift; sourceTree = "<group>"; };
+		6E24C0D62BA0746F00B95FF5 /* SignUpUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUserViewController.swift; sourceTree = "<group>"; };
 		FC5C23232B9EE47500AD3E86 /* VetApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VetApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC5C23262B9EE47500AD3E86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC5C23282B9EE47500AD3E86 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FC5C232A2B9EE47500AD3E86 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FC5C232A2B9EE47500AD3E86 /* VetProfilePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VetProfilePageViewController.swift; sourceTree = "<group>"; };
 		FC5C232F2B9EE47600AD3E86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC5C23322B9EE47600AD3E86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC5C23342B9EE47600AD3E86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +81,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E24C0B12B9EF9E500B95FF5 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				6E24C0B22B9EF9F900B95FF5 /* User.swift */,
+				6E24C0B52B9EFD8100B95FF5 /* VetDetails.swift */,
+				6E24C0BA2B9F1F9C00B95FF5 /* Status.swift */,
+				6E24C0CE2BA0733700B95FF5 /* SignInResponse.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		6E24C0B92B9F1F6700B95FF5 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				FC5C232A2B9EE47500AD3E86 /* VetProfilePageViewController.swift */,
+				6E24C0B72B9F178B00B95FF5 /* UserProfilePageViewController.swift */,
+				6E24C0BC2BA0508E00B95FF5 /* BookingPageViewController.swift */,
+				6E24C0BE2BA056A500B95FF5 /* VetDetailsViewController.swift */,
+				6E24C0C02BA056F500B95FF5 /* HomeViewController.swift */,
+				6E24C0C22BA0574500B95FF5 /* Home2ViewController.swift */,
+				6E24C0C42BA057A900B95FF5 /* MainTabBarController.swift */,
+				6E24C0C62BA0582D00B95FF5 /* MyRequestViewController.swift */,
+				6E24C0C82BA0587600B95FF5 /* FavouriteViewController.swift */,
+				6E24C0D02BA0736500B95FF5 /* WelcomePageViewController.swift */,
+				6E24C0D22BA073C400B95FF5 /* SignInViewController.swift */,
+				6E24C0D42BA0743500B95FF5 /* SignUpVetViewController.swift */,
+				6E24C0D62BA0746F00B95FF5 /* SignUpUserViewController.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
 		FC5C231A2B9EE47500AD3E86 = {
 			isa = PBXGroup;
 			children = (
@@ -66,12 +131,14 @@
 		FC5C23252B9EE47500AD3E86 /* VetApp */ = {
 			isa = PBXGroup;
 			children = (
+				6E24C0B12B9EF9E500B95FF5 /* model */,
+				6E24C0B92B9F1F6700B95FF5 /* VC */,
 				FC5C23262B9EE47500AD3E86 /* AppDelegate.swift */,
 				FC5C23282B9EE47500AD3E86 /* SceneDelegate.swift */,
-				FC5C232A2B9EE47500AD3E86 /* ViewController.swift */,
 				FC5C232F2B9EE47600AD3E86 /* Assets.xcassets */,
 				FC5C23312B9EE47600AD3E86 /* LaunchScreen.storyboard */,
 				FC5C23342B9EE47600AD3E86 /* Info.plist */,
+				6E24C0CC2BA072BE00B95FF5 /* NetworkManager.swift */,
 			);
 			path = VetApp;
 			sourceTree = "<group>";
@@ -160,9 +227,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC5C232B2B9EE47500AD3E86 /* ViewController.swift in Sources */,
+				6E24C0B32B9EF9F900B95FF5 /* User.swift in Sources */,
+				6E24C0B62B9EFD8100B95FF5 /* VetDetails.swift in Sources */,
+				6E24C0C52BA057A900B95FF5 /* MainTabBarController.swift in Sources */,
+				6E24C0C72BA0582D00B95FF5 /* MyRequestViewController.swift in Sources */,
+				6E24C0C92BA0587600B95FF5 /* FavouriteViewController.swift in Sources */,
+				6E24C0BB2B9F1F9C00B95FF5 /* Status.swift in Sources */,
+				6E24C0CF2BA0733700B95FF5 /* SignInResponse.swift in Sources */,
+				6E24C0D52BA0743500B95FF5 /* SignUpVetViewController.swift in Sources */,
+				6E24C0B82B9F178B00B95FF5 /* UserProfilePageViewController.swift in Sources */,
+				6E24C0D72BA0746F00B95FF5 /* SignUpUserViewController.swift in Sources */,
+				6E24C0D12BA0736500B95FF5 /* WelcomePageViewController.swift in Sources */,
+				6E24C0BF2BA056A500B95FF5 /* VetDetailsViewController.swift in Sources */,
+				6E24C0C12BA056F500B95FF5 /* HomeViewController.swift in Sources */,
+				FC5C232B2B9EE47500AD3E86 /* VetProfilePageViewController.swift in Sources */,
 				FC5C23272B9EE47500AD3E86 /* AppDelegate.swift in Sources */,
+				6E24C0C32BA0574500B95FF5 /* Home2ViewController.swift in Sources */,
+				6E24C0D32BA073C400B95FF5 /* SignInViewController.swift in Sources */,
+				6E24C0CD2BA072BE00B95FF5 /* NetworkManager.swift in Sources */,
 				FC5C23292B9EE47500AD3E86 /* SceneDelegate.swift in Sources */,
+				6E24C0BD2BA0508E00B95FF5 /* BookingPageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
