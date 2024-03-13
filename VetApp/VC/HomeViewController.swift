@@ -9,12 +9,11 @@ class HomeViewController: UITableViewController {
 
     var vets: [VetDetails] = [VetDetails(name: "", username: "", email: "", phoneNumber: 1, specialty: "", experience: 1, equipment: "", image: "", password: "", status: "")]
    
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+ 
         tableView.register(Home2TableViewCell.self, forCellReuseIdentifier: "Home2Cell")
-
     }
     
     override func tableView( _ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -52,7 +51,7 @@ class HomeViewController: UITableViewController {
         let secondVC = FavouriteViewController()
         secondVC.selectedVet = selectedVetToBeSend // the problem is here
 
-        // TODO
+        // TODO when i click on the favorite button it should save it to the favorite screen
 
     }
 }

@@ -9,8 +9,6 @@ class FavouriteViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         print(selectedVet ?? "not transfered")
-//        if let selectedVet = selectedVet{
-//            favoriteVets.append(selectedVet)
-//        }
+//TODO
     }
 }

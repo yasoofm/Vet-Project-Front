@@ -105,6 +105,7 @@ class Home2TableViewCell: UITableViewCell {
         }
     }
     
+ 
     let nameLabel = UILabel()
     let specielityLabel = UILabel()
     let statusLabel = UILabel() // New label for status
@@ -119,6 +120,7 @@ class Home2TableViewCell: UITableViewCell {
         contentView.addSubview(accountImageView)
         contentView.addSubview(statusLabel) // Add status label
         contentView.addSubview(favoriteButton)
+       
         setupViews()
         setupConstraints()
     }
@@ -130,7 +132,6 @@ class Home2TableViewCell: UITableViewCell {
     private func setupViews() {
         nameLabel.font = .systemFont(ofSize: 16, weight: .medium)
         nameLabel.textColor = .black
-        
         specielityLabel.font = .systemFont(ofSize: 14, weight: .regular)
         specielityLabel.textColor = .darkGray
         
@@ -140,13 +141,14 @@ class Home2TableViewCell: UITableViewCell {
         accountImageView.contentMode = .scaleAspectFit
         accountImageView.layer.cornerRadius = 50
         accountImageView.layer.masksToBounds = true
-            
-        
+
+        accountImageView.contentMode = .scaleAspectFit
+    
         let symbolConfig = UIImage.SymbolConfiguration(pointSize: 13, weight: .medium, scale: .medium)
         let symbolImage = UIImage(systemName: "star.fill", withConfiguration: symbolConfig)
         favoriteButton.setImage(symbolImage, for: .normal)
         favoriteButton.tintColor = .white
-        favoriteButton.backgroundColor = .black
+        favoriteButton.backgroundColor = .orange
     }
     
     private func setupConstraints() {
@@ -156,19 +158,18 @@ class Home2TableViewCell: UITableViewCell {
             make.top.equalTo(accountImageView.snp.bottom).offset(-20)
 
         }
+
         accountImageView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16)
             make.centerY.equalToSuperview()
             make.width.height.equalTo(100)
             
         }
-        
         nameLabel.snp.makeConstraints { make in
             make.leading.equalTo(accountImageView.snp.trailing).offset(16)
             make.top.equalToSuperview().offset(16)
             make.trailing.lessThanOrEqualToSuperview().offset(-16)
         }
-        
         specielityLabel.snp.makeConstraints { make in
             make.leading.equalTo(nameLabel.snp.leading)
             make.top.equalTo(nameLabel.snp.bottom).offset(8)

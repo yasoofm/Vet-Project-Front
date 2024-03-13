@@ -25,8 +25,8 @@ class SignUpVetViewController: FormViewController {
                 row.tag = "name"
                 row.add(rule: RuleRequired())
                 row.validationOptions = .validatesOnChange
-                
                 row.cellUpdate{ cell, row in
+                    cell.titleLabel?.textColor = .orange
                     if !row.isValid{
                         cell.titleLabel?.textColor = .red
                     }
@@ -41,6 +41,7 @@ class SignUpVetViewController: FormViewController {
                 row.validationOptions = .validatesOnChange
                 
                 row.cellUpdate{ cell, row in
+                    cell.titleLabel?.textColor = .orange
                     if !row.isValid{
                         cell.titleLabel?.textColor = .red
                     }
@@ -54,6 +55,7 @@ class SignUpVetViewController: FormViewController {
                 row.validationOptions = .validatesOnChange
                 
                 row.cellUpdate{ cell, row in
+                    cell.titleLabel?.textColor = .orange
                     if !row.isValid{
                         cell.titleLabel?.textColor = .red
                     }
@@ -68,6 +70,7 @@ class SignUpVetViewController: FormViewController {
                 row.validationOptions = .validatesOnChange
                 
                 row.cellUpdate{ cell, row in
+                    cell.titleLabel?.textColor = .orange
                     if !row.isValid{
                         cell.titleLabel?.textColor = .red
                     }
@@ -80,8 +83,8 @@ class SignUpVetViewController: FormViewController {
                 row.tag = "speciality"
                 row.add(rule: RuleRequired())
                 row.validationOptions = .validatesOnChange
-                
                 row.cellUpdate{ cell, row in
+                    cell.titleLabel?.textColor = .orange
                     if !row.isValid{
                         cell.titleLabel?.textColor = .red
                     }
@@ -90,12 +93,13 @@ class SignUpVetViewController: FormViewController {
             
             <<< IntRow() { row in
                 row.title = "Years Of Experience"
-                row.placeholder = "Enter Years Of Experience"
+                row.placeholder = "Enter Experience"
                 row.tag = "yearsOfExperience"
                 row.add(rule: RuleRequired())
                 row.validationOptions = .validatesOnChange
                 
                 row.cellUpdate{ cell, row in
+                    cell.titleLabel?.textColor = .orange
                     if !row.isValid{
                         cell.titleLabel?.textColor = .red
                     }
@@ -103,13 +107,14 @@ class SignUpVetViewController: FormViewController {
             }
             
             <<< TextRow() { row in
-                row.title = "Speciality"
-                row.placeholder = "Enter Speciality"
-                row.tag = "speciality"
+                row.title = "Equipments"
+                row.placeholder = "Enter the Equipments"
+                row.tag = "equipment"
                 row.add(rule: RuleRequired())
                 row.validationOptions = .validatesOnChange
                 
                 row.cellUpdate{ cell, row in
+                    cell.titleLabel?.textColor = .orange
                     if !row.isValid{
                         cell.titleLabel?.textColor = .red
                     }
@@ -124,12 +129,13 @@ class SignUpVetViewController: FormViewController {
                 row.validationOptions = .validatesOnChange
                 
                 row.cellUpdate{ cell, row in
+                    cell.titleLabel?.textColor = .orange
                     if !row.isValid{
                         cell.titleLabel?.textColor = .red
                     }
                 }
             }
-            
+    
             <<< TextRow() { row in
                 row.title = "Password"
                 row.placeholder = "Enter Password"
@@ -138,6 +144,7 @@ class SignUpVetViewController: FormViewController {
                 row.validationOptions = .validatesOnChange
                 
                 row.cellUpdate{ cell, row in
+                    cell.titleLabel?.textColor = .orange
                     if !row.isValid{
                         cell.titleLabel?.textColor = .red
                     }
@@ -149,6 +156,10 @@ class SignUpVetViewController: FormViewController {
                 row.onCellSelection{ cell , row in
                     print("tapped")
                     self.SignUpVetButtonClicked()
+                }
+                row.cellUpdate { cell, row in
+                    cell.textLabel?.textColor = .white
+                    cell.backgroundColor = .orange
                 }
             }
         }
