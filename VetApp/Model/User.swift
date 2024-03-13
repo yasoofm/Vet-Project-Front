@@ -8,6 +8,7 @@
 import Foundation
 
 struct User: Codable{
+    
     var id: Int64?
     var userName: String
     var email: String
