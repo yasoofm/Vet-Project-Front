@@ -19,4 +19,5 @@ struct VetDetails: Codable{
     var equipment: String
     var image: String
     var password: String
+    var status: String
 }

@@ -2,7 +2,7 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
     
-    var role: String? = "user"
+    var role: String? = "vet"
 
     override func viewDidLoad() {
         super.viewDidLoad()

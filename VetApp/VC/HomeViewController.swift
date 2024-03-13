@@ -7,7 +7,7 @@ class HomeViewController: UITableViewController {
     
     var token: String?
 
-    var vets: [VetDetails] = [VetDetails(name: "", username: "", email: "", phoneNumber: 1, specialty: "", experience: 1, equipment: "", image: "", password: "")]
+    var vets: [VetDetails] = [VetDetails(name: "", username: "", email: "", phoneNumber: 1, specialty: "", experience: 1, equipment: "", image: "", password: "", status: "")]
    
 
     override func viewDidLoad() {
@@ -27,6 +27,8 @@ class HomeViewController: UITableViewController {
         cell.accountImageView.kf.setImage(with: URL(string: vet.image))
         cell.nameLabel.text = "Name: \(vet.name) "
         cell.specielityLabel.text = " \(vet.specialty)"
+        cell.statusLabel.text = "\(vet.status)"
+        cell.accountImageView.image = UIImage(named: "\(vet.image)")
         cell.favoriteButton.tag = indexPath.row
         cell.favoriteButton.addTarget(self, action: #selector(favoriteButtonTapped(_:)), for: .touchUpInside)
 
