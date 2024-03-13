@@ -3,14 +3,13 @@ import SnapKit
 
 class VetProfilePageViewController: UIViewController {
  
-      
+    var vet: VetDetails?
     
     //let dataSource = ["Online", "Offline", "Busy"]
     let dataSource = ["⛔️", "🟡", "🟢"]
     //    let dataSource = [#colorLiteral(red: 1, green: 0, blue: 0, alpha: 1), #colorLiteral(red: 1, green: 0.9484949708, blue: 0, alpha: 1), #colorLiteral(red: 0, green: 1, blue: 0, alpha: 1)]
    // var colort = #colorLiteral())
 
-    
         lazy var containerView: UIView = {
             let view = UIView()
             view.backgroundColor = UIColor.init(displayP3Red: 237/255, green: 233/255, blue: 216/255, alpha: 1.0)
@@ -72,7 +71,7 @@ class VetProfilePageViewController: UIViewController {
     let phoneNumberLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.text = "Email: "
+        label.text = "Phone Number: "
         label.font = UIFont.systemFont(ofSize: 18)
         label.textColor = .black
         return label
