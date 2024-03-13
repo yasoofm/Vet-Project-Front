@@ -16,7 +16,6 @@ class UserProfilePageViewController: UIViewController {
         usernameLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 30).isActive = true
         usernameLabel.myanchor(left: profileImageView.rightAnchor, paddingLeft: 60)
         
-        
         return view
     }()
     
@@ -35,7 +34,7 @@ class UserProfilePageViewController: UIViewController {
         label.textAlignment = .center
         label.text = "vet123"
         label.font = UIFont.systemFont(ofSize: 18)
-        label.textColor = .black
+        label.textColor = .orange
         return label
     }()
     let emailLabel: UILabel = {
@@ -43,7 +42,7 @@ class UserProfilePageViewController: UIViewController {
         label.textAlignment = .center
         label.text = "Email: "
         label.font = UIFont.systemFont(ofSize: 18)
-        label.textColor = .black
+        label.textColor = .orange
         return label
     }()
     
@@ -52,12 +51,12 @@ class UserProfilePageViewController: UIViewController {
         label.textAlignment = .center
         label.text = "Phone Number: "
         label.font = UIFont.systemFont(ofSize: 18)
-        label.textColor = .black
+        label.textColor = .orange
         return label
     }()
     
     let logoutButton = UIButton(type: .system)
-    // MARK: - Lifecycle
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,8 +67,11 @@ class UserProfilePageViewController: UIViewController {
         view.addSubview(emailLabel)
         view.addSubview(phoneNumberLabel)
         view.addSubview(logoutButton)
+        
+        logoutButton.addTarget(self, action: #selector(logoutButtonTapped), for: .touchUpInside)
         logoutButton.setTitle("Logout", for: .normal)
         AutoLayout()
+        applyGradientBackground() 
         
     }
     
@@ -83,24 +85,35 @@ class UserProfilePageViewController: UIViewController {
         phoneNumberLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         phoneNumberLabel.myanchor(top: emailLabel.bottomAnchor, paddingTop: 40)
         
-        logoutButton.backgroundColor = .red
-        logoutButton.setTitleColor(.black, for: .normal)
+        logoutButton.backgroundColor = .orange
+        logoutButton.setTitleColor(.white, for: .normal)
         logoutButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         logoutButton.layer.cornerRadius = 20
         
         logoutButton.snp.makeConstraints { make in
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(40)
-            // make.leading.trailing.equalToSuperview().inset(20)
             make.centerX.equalToSuperview()
             make.height.equalTo(40)
             make.width.equalTo(300)
         }
     }
     
+   func applyGradientBackground() {
+            let gradientLayer = CAGradientLayer()
+       let customColor = UIColor(red: 255/255, green: 165/255, blue: 0/255, alpha: 0.0)
+            gradientLayer.colors = [customColor.cgColor, UIColor.systemMint.cgColor]
+            gradientLayer.locations = [0.0, 9.0]
+            gradientLayer.frame = view.bounds
+            view.layer.insertSublayer(gradientLayer, at: 0)
+        }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
+    @objc func logoutButtonTapped(){
+        
+        navigationController?.setViewControllers([WelcomePageViewController()], animated: true)
+    }
 }
 
 extension UIView {

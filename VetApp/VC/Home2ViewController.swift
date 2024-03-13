@@ -4,6 +4,7 @@ class Home2TableViewCell: UITableViewCell {
     
     var vets: [VetDetails] = [VetDetails(name: "", username: "", email: "", phoneNumber: 1, specialty: "", experience: 1, equipment: "", image: "", password: "")]
     
+ 
     let nameLabel = UILabel()
     let specielityLabel = UILabel()
     let accountImageView = UIImageView()
@@ -16,6 +17,7 @@ class Home2TableViewCell: UITableViewCell {
         contentView.addSubview(specielityLabel)
         contentView.addSubview(accountImageView)
         contentView.addSubview(favoriteButton)
+       
         setupViews()
         setupConstraints()
     }
@@ -27,33 +29,29 @@ class Home2TableViewCell: UITableViewCell {
     private func setupViews() {
         nameLabel.font = .systemFont(ofSize: 16, weight: .medium)
         nameLabel.textColor = .black
-        
         specielityLabel.font = .systemFont(ofSize: 14, weight: .regular)
         specielityLabel.textColor = .darkGray
-        
         accountImageView.contentMode = .scaleAspectFit
-        
-       
+    
         let symbolConfig = UIImage.SymbolConfiguration(pointSize: 13, weight: .medium, scale: .medium)
         let symbolImage = UIImage(systemName: "star.fill", withConfiguration: symbolConfig)
         favoriteButton.setImage(symbolImage, for: .normal)
         favoriteButton.tintColor = .white
-        favoriteButton.backgroundColor = .black
+        favoriteButton.backgroundColor = .orange
     }
     
     private func setupConstraints() {
+       
         accountImageView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16)
             make.centerY.equalToSuperview()
             make.width.height.equalTo(100)
         }
-        
         nameLabel.snp.makeConstraints { make in
             make.leading.equalTo(accountImageView.snp.trailing).offset(16)
             make.top.equalToSuperview().offset(16)
             make.trailing.lessThanOrEqualToSuperview().offset(-16)
         }
-        
         specielityLabel.snp.makeConstraints { make in
             make.leading.equalTo(nameLabel.snp.leading)
             make.top.equalTo(nameLabel.snp.bottom).offset(8)
@@ -66,6 +64,4 @@ class Home2TableViewCell: UITableViewCell {
             make.width.height.equalTo(30)
         }
     }
-    
-   
 }

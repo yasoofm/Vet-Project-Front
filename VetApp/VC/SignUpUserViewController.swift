@@ -1,10 +1,3 @@
-//
-//  SignUpUserViewController.swift
-//  VetApp
-//
-//  Created by Nada Alshaibani on 12/03/2024.
-//
-
 import UIKit
 import Eureka
 
@@ -28,6 +21,7 @@ class SignUpUserViewController: FormViewController {
                 row.validationOptions = .validatesOnChange
                 
                 row.cellUpdate{ cell, row in
+                    cell.titleLabel?.textColor = .orange
                     if !row.isValid{
                         cell.titleLabel?.textColor = .red
                     }
@@ -41,6 +35,7 @@ class SignUpUserViewController: FormViewController {
                 row.validationOptions = .validatesOnChange
                 
                 row.cellUpdate{ cell, row in
+                    cell.titleLabel?.textColor = .orange
                     if !row.isValid{
                         cell.titleLabel?.textColor = .red
                     }
@@ -54,6 +49,7 @@ class SignUpUserViewController: FormViewController {
                 row.validationOptions = .validatesOnChange
                 
                 row.cellUpdate{ cell, row in
+                    cell.titleLabel?.textColor = .orange
                     if !row.isValid{
                         cell.titleLabel?.textColor = .red
                     }
@@ -67,6 +63,7 @@ class SignUpUserViewController: FormViewController {
                 row.validationOptions = .validatesOnChange
                 
                 row.cellUpdate{ cell, row in
+                    cell.titleLabel?.textColor = .orange
                     if !row.isValid{
                         cell.titleLabel?.textColor = .red
                     }
@@ -78,6 +75,10 @@ class SignUpUserViewController: FormViewController {
                 row.onCellSelection{ cell , row in
                     print("tapped")
                     self.SignUpUserButtonClicked()
+                }
+                row.cellUpdate { cell, row in
+                    cell.textLabel?.textColor = .white
+                    cell.backgroundColor = .orange
                 }
             }
         }

@@ -14,6 +14,8 @@ class SignInViewController: FormViewController {
     
     private func setupForm(){
         form +++ Section("Sign In")
+        
+        
         <<< TextRow() { row in
             row.title = "Username"
             row.placeholder = "Enter Username"
@@ -22,6 +24,7 @@ class SignInViewController: FormViewController {
             row.validationOptions = .validatesOnChange
             
             row.cellUpdate{ cell, row in
+                cell.titleLabel?.textColor = .orange
                 if !row.isValid{
                     cell.titleLabel?.textColor = .red
                 }
@@ -35,8 +38,10 @@ class SignInViewController: FormViewController {
             row.validationOptions = .validatesOnChange
             
             row.cellUpdate{ cell, row in
+                cell.titleLabel?.textColor = .orange
                 if !row.isValid{
                     cell.titleLabel?.textColor = .red
+                    
                 }
             }
         }
@@ -48,6 +53,10 @@ class SignInViewController: FormViewController {
                 print("tapped")
                 self.signInButtonClicked()
             }
+            row.cellUpdate { cell, row in
+                cell.textLabel?.textColor = .white
+                cell.backgroundColor = .orange
+            }
             
         }
         
@@ -58,7 +67,7 @@ class SignInViewController: FormViewController {
         
         guard errors.isEmpty else{
             print(errors)
-            presentAlertWithTitle(title: "Error", message: "Some text fields are empty")
+            presentAlertWithTitle(title: "Error❗️", message: "Some text fields are empty")
             return
         }
         
@@ -86,6 +95,7 @@ class SignInViewController: FormViewController {
                 }
             }
         }
+        
         
         func presentAlertWithTitle(title: String, message: String) {
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
