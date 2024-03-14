@@ -1,12 +1,22 @@
 import UIKit
 
+
+// UserDefaults
+
 class MainTabBarController: UITabBarController {
 
-    var role: String? = "user"
+    var info: SignInResponse?
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        setupViewControllers()
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupViewControllers()
+       // setupViewControllers()
         
         tabBar.tintColor = .orange
         tabBar.unselectedItemTintColor = .orange
@@ -16,8 +26,17 @@ class MainTabBarController: UITabBarController {
     func setupViewControllers() {
         
         let homeViewController = HomeViewController()
+        homeViewController.email = info?.email
+        homeViewController.token = info?.token
+        homeViewController.equipment = info?.equipment
+        homeViewController.experience = info?.experience
+        homeViewController.id = info?.id
+        homeViewController.image = info?.image
+        homeViewController.name = info?.name
+        homeViewController.phoneNumber = info?.phoneNumber
+        homeViewController.role = info?.role
+        homeViewController.username = info?.username
         homeViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
-        
         homeViewController.tabBarItem = UITabBarItem(title: "home", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house.fill"))
         
         let favouriteViewController = FavouriteViewController()
@@ -25,11 +44,12 @@ class MainTabBarController: UITabBarController {
         favouriteViewController.tabBarItem = UITabBarItem(title: "favourite", image: UIImage(systemName: "heart"), selectedImage: UIImage(systemName: "heart.fill"))
         
         let myRequestViewController = MyRequestViewController()
+        
         myRequestViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
         myRequestViewController.tabBarItem = UITabBarItem(title: "requests", image: UIImage(systemName: "arrow.down.message"), selectedImage: UIImage(systemName: "arrow.down.message.fill"))
         
         var profileViewController: UIViewController?
-        if role == "user" {
+        if info?.role == "user" {
             profileViewController = UserProfilePageViewController()
             profileViewController?.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
             profileViewController?.tabBarItem = UITabBarItem(title: "user profile", image: UIImage(systemName: "person.crop.circle"), selectedImage: UIImage(systemName: "person.crop.circle.fill"))

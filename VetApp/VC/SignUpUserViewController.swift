@@ -55,7 +55,7 @@ class SignUpUserViewController: FormViewController {
                     }
                 }
             }
-            <<< TextRow() { row in
+            <<< PasswordRow() { row in
                 row.title = "Password"
                 row.placeholder = "Enter Password"
                 row.tag = "password"
@@ -104,16 +104,19 @@ class SignUpUserViewController: FormViewController {
             let password = passwordRow?.value ?? ""
             
             let userRequest = UserSignupRequest(username: username, email: email, phoneNumber: Int64(phoneNumber) ?? 0, password: password)
-            
+            print(username)
+            print(email)
+            print(phoneNumber)
+            print(password)
             NetworkManager.shared.signUpUser(userSignupRequest: userRequest) { success in
                 DispatchQueue.main.async {
                     switch success {
                     case .success(let signInResponse):
                         print("Sign up successful. Token: \(signInResponse.token)")
                         
-//                        let HomeVC = HomeViewController()
-//                        HomeVC.info = signInResponse
-//                        self.navigationController?.pushViewController(HomeVC, animated: true)
+                        let mainVC = MainTabBarController()
+                        mainVC.info = signInResponse
+                        self.navigationController?.pushViewController(mainVC, animated: true)
                     case .failure(let error):
                         print(error.localizedDescription)
                     }

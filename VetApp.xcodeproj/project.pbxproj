@@ -24,8 +24,9 @@
 		6E24C0D32BA073C400B95FF5 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E24C0D22BA073C400B95FF5 /* SignInViewController.swift */; };
 		6E24C0D52BA0743500B95FF5 /* SignUpVetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E24C0D42BA0743500B95FF5 /* SignUpVetViewController.swift */; };
 		6E24C0D72BA0746F00B95FF5 /* SignUpUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E24C0D62BA0746F00B95FF5 /* SignUpUserViewController.swift */; };
-		89A3C6AF2BA1948F00E1FB3F /* GetVetsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A3C6AE2BA1948F00E1FB3F /* GetVetsResponse.swift */; };
 		FC4959CB2BA1BEFA00849462 /* SigninRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4959CA2BA1BEFA00849462 /* SigninRequest.swift */; };
+		FC4959CD2BA2F2B400849462 /* VetSignupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4959CC2BA2F2B400849462 /* VetSignupRequest.swift */; };
+		FC4959CF2BA319EF00849462 /* VetId.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4959CE2BA319EF00849462 /* VetId.swift */; };
 		FC5C23272B9EE47500AD3E86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5C23262B9EE47500AD3E86 /* AppDelegate.swift */; };
 		FC5C23292B9EE47500AD3E86 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5C23282B9EE47500AD3E86 /* SceneDelegate.swift */; };
 		FC5C232B2B9EE47500AD3E86 /* VetProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5C232A2B9EE47500AD3E86 /* VetProfilePageViewController.swift */; };
@@ -57,8 +58,9 @@
 		6E24C0D22BA073C400B95FF5 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		6E24C0D42BA0743500B95FF5 /* SignUpVetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVetViewController.swift; sourceTree = "<group>"; };
 		6E24C0D62BA0746F00B95FF5 /* SignUpUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUserViewController.swift; sourceTree = "<group>"; };
-		89A3C6AE2BA1948F00E1FB3F /* GetVetsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVetsResponse.swift; sourceTree = "<group>"; };
 		FC4959CA2BA1BEFA00849462 /* SigninRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninRequest.swift; sourceTree = "<group>"; };
+		FC4959CC2BA2F2B400849462 /* VetSignupRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VetSignupRequest.swift; sourceTree = "<group>"; };
+		FC4959CE2BA319EF00849462 /* VetId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VetId.swift; sourceTree = "<group>"; };
 		FC5C23232B9EE47500AD3E86 /* VetApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VetApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC5C23262B9EE47500AD3E86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC5C23282B9EE47500AD3E86 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,11 +91,12 @@
 			isa = PBXGroup;
 			children = (
 				6E24C0B22B9EF9F900B95FF5 /* UserSignupRequest.swift */,
+				FC4959CC2BA2F2B400849462 /* VetSignupRequest.swift */,
 				6E24C0B52B9EFD8100B95FF5 /* VetDetails.swift */,
 				6E24C0BA2B9F1F9C00B95FF5 /* Status.swift */,
 				6E24C0CE2BA0733700B95FF5 /* SignInResponse.swift */,
-				89A3C6AE2BA1948F00E1FB3F /* GetVetsResponse.swift */,
 				FC4959CA2BA1BEFA00849462 /* SigninRequest.swift */,
+				FC4959CE2BA319EF00849462 /* VetId.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -259,9 +262,10 @@
 				FC5C23272B9EE47500AD3E86 /* AppDelegate.swift in Sources */,
 				6E24C0C32BA0574500B95FF5 /* Home2ViewController.swift in Sources */,
 				6E24C0D32BA073C400B95FF5 /* SignInViewController.swift in Sources */,
+				FC4959CF2BA319EF00849462 /* VetId.swift in Sources */,
 				6E24C0CD2BA072BE00B95FF5 /* NetworkManager.swift in Sources */,
 				FC5C23292B9EE47500AD3E86 /* SceneDelegate.swift in Sources */,
-				89A3C6AF2BA1948F00E1FB3F /* GetVetsResponse.swift in Sources */,
+				FC4959CD2BA2F2B400849462 /* VetSignupRequest.swift in Sources */,
 				6E24C0BD2BA0508E00B95FF5 /* BookingPageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

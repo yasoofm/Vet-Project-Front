@@ -15,7 +15,7 @@ struct SignInResponse: Codable{
     var name: String?
     var image: String?
     var equipment: String?
-    var experience: Int64?
+    var experience: Int?
     var phoneNumber: Int64
 }
 

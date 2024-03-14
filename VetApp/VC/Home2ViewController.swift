@@ -95,7 +95,7 @@ class Home2TableViewCell: UITableViewCell {
     var vet: VetDetails? {
         didSet {
             nameLabel.text = vet?.name
-            specielityLabel.text = vet?.specialty
+            specielityLabel.text = vet?.speciality
             statusLabel.text = vet?.status // Display status
             if let imageData = vet?.image {
                            accountImageView.image = UIImage(named: imageData)
