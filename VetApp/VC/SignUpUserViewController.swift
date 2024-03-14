@@ -46,7 +46,7 @@ class SignUpUserViewController: FormViewController {
                     }
                 }
             }
-            <<< IntRow() { row in
+            <<< PhoneRow() { row in
                 row.title = "Phone Number"
                 row.placeholder = "Enter Phone Number"
                 row.tag = "phoneNumber"
@@ -94,25 +94,25 @@ class SignUpUserViewController: FormViewController {
             
             let userNameRow: TextRow? = form.rowBy(tag: "username")
             let emailRow: EmailRow? = form.rowBy(tag: "email")
-            let phoneNumberRow: IntRow? = form.rowBy(tag: "phoneNumber")
+            let phoneNumberRow: PhoneRow? = form.rowBy(tag: "phoneNumber")
             let passwordRow: PasswordRow? = form.rowBy(tag: "password")
             
             let username = userNameRow?.value ?? ""
             let email = emailRow?.value ?? ""
-            let phoneNumber = phoneNumberRow?.value ?? 00
+            let phoneNumber = phoneNumberRow?.value ?? ""
             let password = passwordRow?.value ?? ""
             
-            let user = User(id: nil, userName: username, email: email, role: nil, token: nil, phoneNumber: Int64(phoneNumber), password: password)
+            let userRequest = UserSignupRequest(username: username, email: email, phoneNumber: Int64(phoneNumber) ?? 0, password: password)
             
-            NetworkManager.shared.signUpUser(user: user) { success in
+            NetworkManager.shared.signUpUser(userSignupRequest: userRequest) { success in
                 DispatchQueue.main.async {
                     switch success {
                     case .success(let signInResponse):
                         print("Sign up successful. Token: \(signInResponse.token)")
                         
-                        let HomeVC = HomeViewController()
-                        HomeVC.token = signInResponse.token
-                        self.navigationController?.pushViewController(HomeVC, animated: true)
+//                        let HomeVC = HomeViewController()
+//                        HomeVC.info = signInResponse
+//                        self.navigationController?.pushViewController(HomeVC, animated: true)
                     case .failure(let error):
                         print(error.localizedDescription)
                     }

@@ -7,7 +7,6 @@
 
 import Foundation
 struct SignInResponse: Codable{
-
     var id: Int64
     var email: String
     var role: String
@@ -19,3 +18,5 @@ struct SignInResponse: Codable{
     var experience: Int64?
     var phoneNumber: Int64
 }
+
+

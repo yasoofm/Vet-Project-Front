@@ -5,7 +5,7 @@ import Kingfisher
 
 class HomeViewController: UITableViewController {
     
-    var token: String?
+    var info: SignInResponse?
 
     var vets: [VetDetails] = [VetDetails(name: "", username: "", email: "", phoneNumber: 1, specialty: "", experience: 1, equipment: "", image: "", password: "")]
    

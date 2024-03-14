@@ -5,27 +5,38 @@ class NetworkManager {
     
     static let shared = NetworkManager()
     
-    private let  baseURL = ""
+    private let  baseURL = "http://localhost:8080/api/v1/"
     
     //Post Method: for signing in either as a user or as a vet
-    func signin(username: String,password: String, completion: @escaping (Result<SignInResponse, Error>) -> Void) {
-       let url = baseURL + "auth/signin"
-        let parameters : [String: String] = ["username": username,"password": password]
-       AF.request(url, method: .post, parameters: parameters, encoder: JSONParameterEncoder.default).responseDecodable(of: SignInResponse.self) { response in
-           switch response.result {
-           case .success(let value):
-               completion(.success(value))
-           case .failure(let afError):
-               completion(.failure(afError as Error))
-           }
-       }
-   }
+    func signin(request: SigninRequest, completion: @escaping (Result<SignInResponse, Error>) -> Void) {
+        
+        let url = baseURL + "auth/signin"
+        
+        AF.request(url, method: .post, parameters: request, encoder: JSONParameterEncoder.default).responseDecodable(of: SignInResponse.self) { response in
+            switch response.result {
+            case .success(let value):
+                // EXTRA LINE FOR DEBUGGING
+                                 if let data = response.data, let str = String(data: data, encoding: .utf8) {
+                                     print("Raw response: \(str)")
+                                 }
+                completion(.success(value))
+            case .failure(let afError):
+                // EXTRA LINE FOR DEBUGGING
+                                 if let data = response.data, let str = String(data: data, encoding: .utf8) {
+                                     print("Raw response: \(str)")
+                                 }
+                print(afError.localizedDescription)
+                completion(.failure(afError as Error))
+                
+            }
+        }
+    }
     
     
     // Post Method: for signing up as a user
-    func signUpUser(user: User, completion: @escaping (Result<SignInResponse, Error>) -> Void) {
+    func signUpUser(userSignupRequest: UserSignupRequest, completion: @escaping (Result<SignInResponse, Error>) -> Void) {
        let url = baseURL + "auth/user-signup"
-       AF.request(url, method: .post, parameters: user, encoder: JSONParameterEncoder.default).responseDecodable(of: SignInResponse.self) { response in
+       AF.request(url, method: .post, parameters: userSignupRequest, encoder: JSONParameterEncoder.default).responseDecodable(of: SignInResponse.self) { response in
            switch response.result {
            case .success(let value):
                completion(.success(value))
@@ -52,64 +63,64 @@ class NetworkManager {
     
     
     // Get Method: To get all vets from user
-    func getAllVetsFromUsers(token: String, user: User, completion: @escaping (Result<Void, Error>) -> Void){
-        let url = baseURL + "user/vets"
-        let headers: HTTPHeaders = [.authorization(bearerToken: token)]
-        AF.request(url, method: .get, parameters: user, encoder: JSONParameterEncoder.default, headers: headers).response{ response in
-            if let error = response.error {
-                completion(.failure(error))
-            }
-            else {
-                completion (.success(()))
-            }
-        }
-    }
+//    func getAllVetsFromUsers(token: String, user: User, completion: @escaping (Result<Void, Error>) -> Void){
+//        let url = baseURL + "user/vets"
+//        let headers: HTTPHeaders = [.authorization(bearerToken: token)]
+//        AF.request(url, method: .get, parameters: user, encoder: JSONParameterEncoder.default, headers: headers).response{ response in
+//            if let error = response.error {
+//                completion(.failure(error))
+//            }
+//            else {
+//                completion (.success(()))
+//            }
+//        }
+//    }
     
     
     //Post Method: For users to post request.
-    func userPostRequest(token: String, user: User, completion: @escaping (Result<Void, Error>) -> Void){
-        let url = baseURL + "user/request"
-        let headers: HTTPHeaders = [.authorization(bearerToken: token)]
-        AF.request(url, method: .post, parameters: user, encoder: JSONParameterEncoder.default, headers: headers).response{ response in
-            if let error = response.error{
-                completion(.failure(error))
-            }
-            else {
-                completion(.success(()))
-            }
-        }
-        
-    }
+//    func userPostRequest(token: String, user: User, completion: @escaping (Result<Void, Error>) -> Void){
+//        let url = baseURL + "user/request"
+//        let headers: HTTPHeaders = [.authorization(bearerToken: token)]
+//        AF.request(url, method: .post, parameters: user, encoder: JSONParameterEncoder.default, headers: headers).response{ response in
+//            if let error = response.error{
+//                completion(.failure(error))
+//            }
+//            else {
+//                completion(.success(()))
+//            }
+//        }
+//        
+//    }
     
     
     // Get Method: For users to see their request history
-    func userGetHistory(token: String, user: User, completion: @escaping (Result<Void, Error>) -> Void){
-        let url = baseURL + "user/history"
-        let headers: HTTPHeaders = [.authorization(bearerToken: token)]
-        AF.request(url, method: .get, parameters: user, encoder: JSONParameterEncoder.default, headers: headers).response{ response in
-            if let error = response.error{
-                completion(.failure(error))
-            }
-            else {
-                completion (.success(()))
-            }
-        }
-    }
+//    func userGetHistory(token: String, user: User, completion: @escaping (Result<Void, Error>) -> Void){
+//        let url = baseURL + "user/history"
+//        let headers: HTTPHeaders = [.authorization(bearerToken: token)]
+//        AF.request(url, method: .get, parameters: user, encoder: JSONParameterEncoder.default, headers: headers).response{ response in
+//            if let error = response.error{
+//                completion(.failure(error))
+//            }
+//            else {
+//                completion (.success(()))
+//            }
+//        }
+//    }
     
     
     // Get Method: For users to get the status of the vet
-    func userGetStatus(token: String, user: User, completion: @escaping (Result<Void, Error>) -> Void){
-        let url = baseURL + "user/get-status"
-        let headers: HTTPHeaders = [.authorization(bearerToken: token)]
-        AF.request(url, method: .get, parameters: user, encoder: JSONParameterEncoder.default, headers: headers).response{ response in
-            if let error = response.error{
-                completion(.failure(error))
-            }
-            else {
-                completion (.success(()))
-            }
-        }
-    }
+//    func userGetStatus(token: String, user: User, completion: @escaping (Result<Void, Error>) -> Void){
+//        let url = baseURL + "user/get-status"
+//        let headers: HTTPHeaders = [.authorization(bearerToken: token)]
+//        AF.request(url, method: .get, parameters: user, encoder: JSONParameterEncoder.default, headers: headers).response{ response in
+//            if let error = response.error{
+//                completion(.failure(error))
+//            }
+//            else {
+//                completion (.success(()))
+//            }
+//        }
+//    }
     
     
     // Get Method: To get all vets from vets
