@@ -193,7 +193,7 @@ class SignUpVetViewController: FormViewController {
             let image = imageRow?.value ?? ""
             let password = passwordRow?.value ?? ""
             
-            let vet = VetDetails(id: nil, name: name, username: username, email: email, phoneNumber: Int64(phoneNumber), specialty: speciality, experience: yearsOfExperience, equipment: equipment, image: image, password: password, status: "")
+            let vet = VetDetails(id: nil, name: name, username: username, email: email, phoneNumber: Int64(phoneNumber), speciality: speciality, experience: yearsOfExperience, equipment: equipment, image: image, password: password, status: "")
             
             
             NetworkManager.shared.signUpVet(vet: vet) { success in

@@ -115,7 +115,7 @@ class VetDetailsViewController: UIViewController {
         emailLabel.text = "Email: \(vet?.email ?? "Empty")"
         phoneNumberLabel.text = " Phone number: \(String(vet?.phoneNumber ?? 0))"
         yearsOfExperienceLabel.text = " Years of experiemnce: \(String(vet?.experience ?? 0))"
-        specielityLabel.text = "Specielity: \(vet?.specialty ?? "Empty")"
+        specielityLabel.text = "Specielity: \(vet?.speciality ?? "Empty")"
         equipmentsLabel.text = " Available Equipments: \(vet?.equipment ?? "Empty")"
     }
 }

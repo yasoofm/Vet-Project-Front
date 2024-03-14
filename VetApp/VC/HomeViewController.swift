@@ -7,7 +7,7 @@ class HomeViewController: UITableViewController {
     
     var info: SignInResponse?
 
-    var vets: [VetDetails] = [VetDetails(name: "", username: "", email: "", phoneNumber: 1, specialty: "", experience: 1, equipment: "", image: "", password: "", status: "")]
+    var vets: [VetDetails] = [VetDetails(name: "", username: "", email: "", phoneNumber: 1, speciality: "", experience: 1, equipment: "", image: "", password: "", status: "")]
    
     
     override func viewDidLoad() {
@@ -25,7 +25,7 @@ class HomeViewController: UITableViewController {
         let vet = vets[indexPath.row]
         cell.accountImageView.kf.setImage(with: URL(string: vet.image))
         cell.nameLabel.text = "Name: \(vet.name) "
-        cell.specielityLabel.text = " \(vet.specialty)"
+        cell.specielityLabel.text = " \(vet.speciality)"
         cell.statusLabel.text = "\(vet.status)"
         cell.accountImageView.image = UIImage(named: "\(vet.image)")
         cell.favoriteButton.tag = indexPath.row

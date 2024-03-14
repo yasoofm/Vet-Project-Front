@@ -25,6 +25,9 @@
 		6E24C0D52BA0743500B95FF5 /* SignUpVetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E24C0D42BA0743500B95FF5 /* SignUpVetViewController.swift */; };
 		6E24C0D72BA0746F00B95FF5 /* SignUpUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E24C0D62BA0746F00B95FF5 /* SignUpUserViewController.swift */; };
 		89A3C6AF2BA1948F00E1FB3F /* GetVetsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A3C6AE2BA1948F00E1FB3F /* GetVetsResponse.swift */; };
+		AE1AF5182BA31B8800C954F9 /* BookRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1AF5172BA31B8800C954F9 /* BookRequest.swift */; };
+		AE1AF51A2BA31C1500C954F9 /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1AF5192BA31C1500C954F9 /* FavoriteTableViewCell.swift */; };
+		AE1AF51C2BA31C4F00C954F9 /* MyRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1AF51B2BA31C4F00C954F9 /* MyRequestTableViewCell.swift */; };
 		FC4959CB2BA1BEFA00849462 /* SigninRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4959CA2BA1BEFA00849462 /* SigninRequest.swift */; };
 		FC5C23272B9EE47500AD3E86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5C23262B9EE47500AD3E86 /* AppDelegate.swift */; };
 		FC5C23292B9EE47500AD3E86 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5C23282B9EE47500AD3E86 /* SceneDelegate.swift */; };
@@ -58,6 +61,9 @@
 		6E24C0D42BA0743500B95FF5 /* SignUpVetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVetViewController.swift; sourceTree = "<group>"; };
 		6E24C0D62BA0746F00B95FF5 /* SignUpUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUserViewController.swift; sourceTree = "<group>"; };
 		89A3C6AE2BA1948F00E1FB3F /* GetVetsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVetsResponse.swift; sourceTree = "<group>"; };
+		AE1AF5172BA31B8800C954F9 /* BookRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRequest.swift; sourceTree = "<group>"; };
+		AE1AF5192BA31C1500C954F9 /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
+		AE1AF51B2BA31C4F00C954F9 /* MyRequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRequestTableViewCell.swift; sourceTree = "<group>"; };
 		FC4959CA2BA1BEFA00849462 /* SigninRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninRequest.swift; sourceTree = "<group>"; };
 		FC5C23232B9EE47500AD3E86 /* VetApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VetApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC5C23262B9EE47500AD3E86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +100,7 @@
 				6E24C0CE2BA0733700B95FF5 /* SignInResponse.swift */,
 				89A3C6AE2BA1948F00E1FB3F /* GetVetsResponse.swift */,
 				FC4959CA2BA1BEFA00849462 /* SigninRequest.swift */,
+				AE1AF5172BA31B8800C954F9 /* BookRequest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -114,6 +121,8 @@
 				6E24C0D22BA073C400B95FF5 /* SignInViewController.swift */,
 				6E24C0D42BA0743500B95FF5 /* SignUpVetViewController.swift */,
 				6E24C0D62BA0746F00B95FF5 /* SignUpUserViewController.swift */,
+				AE1AF5192BA31C1500C954F9 /* FavoriteTableViewCell.swift */,
+				AE1AF51B2BA31C4F00C954F9 /* MyRequestTableViewCell.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -241,6 +250,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE1AF5182BA31B8800C954F9 /* BookRequest.swift in Sources */,
+				AE1AF51A2BA31C1500C954F9 /* FavoriteTableViewCell.swift in Sources */,
 				6E24C0B32B9EF9F900B95FF5 /* UserSignupRequest.swift in Sources */,
 				6E24C0B62B9EFD8100B95FF5 /* VetDetails.swift in Sources */,
 				6E24C0C52BA057A900B95FF5 /* MainTabBarController.swift in Sources */,
@@ -253,6 +264,7 @@
 				6E24C0B82B9F178B00B95FF5 /* UserProfilePageViewController.swift in Sources */,
 				6E24C0D72BA0746F00B95FF5 /* SignUpUserViewController.swift in Sources */,
 				6E24C0D12BA0736500B95FF5 /* WelcomePageViewController.swift in Sources */,
+				AE1AF51C2BA31C4F00C954F9 /* MyRequestTableViewCell.swift in Sources */,
 				6E24C0BF2BA056A500B95FF5 /* VetDetailsViewController.swift in Sources */,
 				6E24C0C12BA056F500B95FF5 /* HomeViewController.swift in Sources */,
 				FC5C232B2B9EE47500AD3E86 /* VetProfilePageViewController.swift in Sources */,

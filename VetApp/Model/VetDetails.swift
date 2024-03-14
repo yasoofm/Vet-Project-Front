@@ -14,7 +14,7 @@ struct VetDetails: Codable{
     var username: String
     var email: String
     var phoneNumber: Int64 
-    var specialty: String
+    var speciality: String
     var experience: Int
     var equipment: String
     var image: String
