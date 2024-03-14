@@ -30,13 +30,12 @@ class SignInViewController: FormViewController {
                 }
             }
         }
-        <<< TextRow() { row in
+        <<< PasswordRow() { row in
             row.title = "Password"
             row.placeholder = "Enter Password"
             row.tag = "password"
             row.add(rule: RuleRequired())
             row.validationOptions = .validatesOnChange
-            
             row.cellUpdate{ cell, row in
                 cell.titleLabel?.textColor = .orange
                 if !row.isValid{
@@ -77,21 +76,17 @@ class SignInViewController: FormViewController {
         let username = userNameRow?.value ?? ""
         let password = passwordRow?.value ?? ""
         
+        var request = SigninRequest(username: username.lowercased(), password: password)
         
-        
-        NetworkManager.shared.signin(username: username, password: password) { success in
+        NetworkManager.shared.signin(request: request) { result in
             DispatchQueue.main.async {
-                switch success {
-                case .success(let tokenResponse):
-                    print("Sign In successful. Token: \(tokenResponse.token)")
-                    
-                    let HomeVC = HomeViewController()
-                    HomeVC.token = tokenResponse.token
-                    self.navigationController?.pushViewController(HomeVC, animated: true)
-                    
+                switch result{
+                case .success(let response):
+                    let homeVC = HomeViewController()
+                    homeVC.info = response
+                    self.navigationController?.pushViewController(homeVC, animated: true)
                 case .failure(let error):
-                    print("Sign In failed. Error: \(error.localizedDescription)")
-                    
+                    print(error)
                 }
             }
         }

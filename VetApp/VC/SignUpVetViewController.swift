@@ -203,7 +203,7 @@ class SignUpVetViewController: FormViewController {
                         print("Sign up successful. Token: \(response.token)")
                         
                         let HomeVC = HomeViewController()
-                        HomeVC.token = response.token
+                        HomeVC.info = response
                         self.navigationController?.pushViewController(HomeVC, animated: true)
                     case .failure(let error):
                         print(error.localizedDescription)

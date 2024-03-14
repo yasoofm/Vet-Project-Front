@@ -7,13 +7,10 @@
 
 import Foundation
 
-struct User: Codable{
-    
-    var id: Int64?
-    var userName: String
+struct UserSignupRequest: Codable{
+    var username: String
     var email: String
-    var role: String?
-    var token: String?
     var phoneNumber: Int64
     var password: String
 }
+
