@@ -17,10 +17,7 @@ class HomeViewController: UITableViewController {
     var username: String?
     
     var vets: [VetDetails]?
-
-//    var vets: [VetDetails] = [VetDetails(name: "", username: "", email: "", phoneNumber: 1, specialty: "", experience: 1, equipment: "", image: "", password: "", status: "")]
-   
-    
+       
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchVets(token: token ?? "")
