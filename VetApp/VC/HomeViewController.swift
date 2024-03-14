@@ -4,30 +4,38 @@ import SnapKit
 import Kingfisher
 
 class HomeViewController: UITableViewController {
-    
-    var info: SignInResponse?
 
-    var vets: [VetDetails] = [VetDetails(name: "", username: "", email: "", phoneNumber: 1, speciality: "", experience: 1, equipment: "", image: "", password: "", status: "")]
-   
+    var name: String?
+    var id: Int64?
+    var email: String?
+    var equipment: String?
+    var experience: Int?
+    var image: String?
+    var phoneNumber: Int64?
+    var role: String?
+    var token: String?
+    var username: String?
     
+    var vets: [VetDetails]?
+       
     override func viewDidLoad() {
         super.viewDidLoad()
- 
+        fetchVets(token: token ?? "")
         tableView.register(Home2TableViewCell.self, forCellReuseIdentifier: "Home2Cell")
     }
     
     override func tableView( _ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return vets.count
+        return vets?.count ?? 0
     }
 
     override func tableView( _ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Home2Cell", for: indexPath) as! Home2TableViewCell
-        let vet = vets[indexPath.row]
-        cell.accountImageView.kf.setImage(with: URL(string: vet.image))
-        cell.nameLabel.text = "Name: \(vet.name) "
-        cell.specielityLabel.text = " \(vet.speciality)"
-        cell.statusLabel.text = "\(vet.status)"
-        cell.accountImageView.image = UIImage(named: "\(vet.image)")
+        let vet = vets?[indexPath.row]
+        cell.accountImageView.kf.setImage(with: URL(string: vet?.image ?? ""))
+        cell.nameLabel.text = "Name: \(vet?.name ?? "") "
+        cell.specielityLabel.text = " \(vet?.speciality ?? "")"
+        cell.statusLabel.text = "\(vet?.status ?? "")"
+        //cell.accountImageView.image = UIImage(named: "\(vet?.image)")
         cell.favoriteButton.tag = indexPath.row
         cell.favoriteButton.addTarget(self, action: #selector(favoriteButtonTapped(_:)), for: .touchUpInside)
 
@@ -39,20 +47,55 @@ class HomeViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = VetDetailsViewController()
-        let selectedVets = vets[indexPath.row]
+        let selectedVets = vets?[indexPath.row]
         detailVC.vet = selectedVets
         navigationController?.pushViewController(detailVC, animated: true)
     }
     
     @objc func favoriteButtonTapped(_ sender: UIButton){
         let selectedIndex = sender.tag
-        let selectedVetToBeSend = vets[selectedIndex]
-        
-        let secondVC = FavouriteViewController()
-        secondVC.selectedVet = selectedVetToBeSend // the problem is here
+        let selectedVetToBeSend = vets?[selectedIndex]
 
         // TODO when i click on the favorite button it should save it to the favorite screen
-
+        let vetId = VetId(vetId: selectedVetToBeSend?.id ?? 0)
+        NetworkManager.shared.addFavorite(token: self.token ?? "", vetId: vetId) { result in
+            DispatchQueue.main.async {
+                switch result{
+                case .success:
+                    print("added to favorite")
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+    }
+    
+    func fetchVets(token: String){
+        if self.role == "user"{
+            NetworkManager.shared.getAllVetsForUsers(token: token) { result in
+                DispatchQueue.main.async {
+                    switch result{
+                    case .success(let vets):
+                        self.vets = vets
+                        self.tableView.reloadData()
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+            }
+        } else {
+            NetworkManager.shared.getAllVetsForVet(token: token) { result in
+                DispatchQueue.main.async {
+                    switch result{
+                    case .success(let vets):
+                        self.vets = vets
+                        self.tableView.reloadData()
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+            }
+        }
     }
 }
 

@@ -1,24 +1,20 @@
 //
-//  Vet.swift
+//  VetSignupRequest.swift
 //  VetApp
 //
-//  Created by Nada Alshaibani on 11/03/2024.
+//  Created by yousef mandani on 14/03/2024.
 //
 
 import Foundation
 
-struct VetDetails: Codable{
-    
-    var id: Int64?
+struct VetSignupRequest: Codable{
     var name: String
     var username: String
     var email: String
-    var phoneNumber: Int64 
+    var phoneNumber: Int64
     var speciality: String
     var experience: Int
     var equipment: String
     var image: String
     var password: String
-    var status: String
-    var favorite: Bool
 }

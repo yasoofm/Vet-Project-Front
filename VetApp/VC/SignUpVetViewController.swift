@@ -62,7 +62,7 @@ class SignUpVetViewController: FormViewController {
                 }
             }
             
-            <<< IntRow() { row in
+            <<< PhoneRow() { row in
                 row.title = "Phone Number"
                 row.placeholder = "Enter Phone Number"
                 row.tag = "phoneNumber"
@@ -136,7 +136,7 @@ class SignUpVetViewController: FormViewController {
                 }
             }
     
-            <<< TextRow() { row in
+            <<< PasswordRow() { row in
                 row.title = "Password"
                 row.placeholder = "Enter Password"
                 row.tag = "password"
@@ -176,7 +176,7 @@ class SignUpVetViewController: FormViewController {
             let nameRow: TextRow? = form.rowBy(tag: "name")
             let userNameRow: TextRow? = form.rowBy(tag: "username")
             let emailRow: EmailRow? = form.rowBy(tag: "email")
-            let phoneNumberRow: IntRow? = form.rowBy(tag: "phoneNumber")
+            let phoneNumberRow: PhoneRow? = form.rowBy(tag: "phoneNumber")
             let specialityRow: TextRow? = form.rowBy(tag: "speciality")
             let yearsOfExperienceRow: IntRow? = form.rowBy(tag: "yearsOfExperience")
             let equipmentRow: TextRow? = form.rowBy(tag: "equipment")
@@ -186,15 +186,16 @@ class SignUpVetViewController: FormViewController {
             let name = nameRow?.value ?? ""
             let username = userNameRow?.value ?? ""
             let email = emailRow?.value ?? ""
-            let phoneNumber = phoneNumberRow?.value ?? 00
+            let phoneNumber = phoneNumberRow?.value ?? ""
             let speciality = specialityRow?.value ?? ""
             let yearsOfExperience = yearsOfExperienceRow?.value ?? 00
             let equipment = equipmentRow?.value ?? ""
             let image = imageRow?.value ?? ""
             let password = passwordRow?.value ?? ""
             
-            let vet = VetDetails(id: nil, name: name, username: username, email: email, phoneNumber: Int64(phoneNumber), speciality: speciality, experience: yearsOfExperience, equipment: equipment, image: image, password: password, status: "")
+            let vet = VetSignupRequest(name: name, username: username, email: email, phoneNumber: Int64(phoneNumber) ?? 0, speciality: speciality, experience: yearsOfExperience, equipment: equipment, image: image, password: password)
             
+            print(vet)
             
             NetworkManager.shared.signUpVet(vet: vet) { success in
                 DispatchQueue.main.async {
@@ -202,9 +203,9 @@ class SignUpVetViewController: FormViewController {
                     case .success(let response):
                         print("Sign up successful. Token: \(response.token)")
                         
-                        let HomeVC = HomeViewController()
-                        HomeVC.info = response
-                        self.navigationController?.pushViewController(HomeVC, animated: true)
+                        let mainVC = MainTabBarController()
+                        mainVC.info = response
+                        self.navigationController?.pushViewController(mainVC, animated: true)
                     case .failure(let error):
                         print(error.localizedDescription)
                     }

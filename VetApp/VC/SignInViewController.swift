@@ -76,15 +76,15 @@ class SignInViewController: FormViewController {
         let username = userNameRow?.value ?? ""
         let password = passwordRow?.value ?? ""
         
-        var request = SigninRequest(username: username.lowercased(), password: password)
+        let request = SigninRequest(username: username.lowercased(), password: password)
         
         NetworkManager.shared.signin(request: request) { result in
             DispatchQueue.main.async {
                 switch result{
                 case .success(let response):
-                    let homeVC = HomeViewController()
-                    homeVC.info = response
-                    self.navigationController?.pushViewController(homeVC, animated: true)
+                    let mainTabBarVC = MainTabBarController()
+                    mainTabBarVC.info = response
+                    self.navigationController?.pushViewController(mainTabBarVC, animated: true)
                 case .failure(let error):
                     print(error)
                 }

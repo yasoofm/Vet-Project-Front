@@ -7,6 +7,8 @@ class MyRequestViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
+        print(testing)
 
         tableView.register(MyRequestTableViewCell.self, forCellReuseIdentifier: "MyRequestCell")
 
