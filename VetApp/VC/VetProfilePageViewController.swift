@@ -3,9 +3,16 @@ import SnapKit
 
 class VetProfilePageViewController: UIViewController {
 
-    var vet: VetDetails?
-    
-    
+    var token: String?
+    var username: String?
+    var email: String?
+    var name: String?
+    var image: String?
+    var speciality: String?
+    var equipment: String?
+    var experience: Int?
+    var phoneNumber: Int64?
+    var status: String?
     
     //let dataSource = ["Online", "Offline", "Busy"]
     let dataSource = ["⛔️", "🟡", "🟢"]
@@ -37,6 +44,7 @@ class VetProfilePageViewController: UIViewController {
      */
     // var colort = #colorLiteral())
     
+    let button = UIButton(primaryAction: nil)
     
     lazy var containerView: UIView = {
         let view = UIView()
@@ -145,15 +153,62 @@ class VetProfilePageViewController: UIViewController {
         view.addSubview(equipmentLabel)
         view.addSubview(logoutButton)
         
+        profileImageView.kf.setImage(with: URL(string: image ?? ""))
+        emailLabel.text = "Email: \(email ?? "")"
+        phoneNumberLabel.text = "Phone Number: \(phoneNumber ?? 0)"
+        experienceLabel.text = "Years of Experience: \(experience ?? 0)"
+        specialityLabel.text = "Speciality: \(speciality  ?? "")"
+        equipmentLabel.text = "Equipment: \(equipment  ?? "")"
+        nameLabel.text = name
+        usernameLabel.text = username
+        
+        
         logoutButton.addTarget(self, action: #selector(logoutButtonTapped), for: .touchUpInside)
         logoutButton.setTitle("Logout", for: .normal)
         AutoLayout()
         applyGradientBackground()
         
-        let button = UIButton(primaryAction: nil)
-        
         let actionClosure = { (action: UIAction) in
-            print(action.title)
+            switch action.title{
+            case "🟢":
+                let newStatus = StatusResponse(status: "Online")
+                NetworkManager.shared.updateStatus(token: self.token ?? "", newStatus: newStatus) { result in
+                    DispatchQueue.main.async {
+                        switch result{
+                        case .success(let status):
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "vets"), object: nil)
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }
+                }
+            case "⛔️":
+                let newStatus = StatusResponse(status: "Offline")
+                NetworkManager.shared.updateStatus(token: self.token ?? "", newStatus: newStatus) { result in
+                    DispatchQueue.main.async {
+                        switch result{
+                        case .success(let status):
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "vets"), object: nil)
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }
+                }
+            case "🟡":
+                let newStatus = StatusResponse(status: "Occupied")
+                NetworkManager.shared.updateStatus(token: self.token ?? "", newStatus: newStatus) { result in
+                    DispatchQueue.main.async {
+                        switch result{
+                        case .success(let status):
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "vets"), object: nil)
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }
+                }
+            default:
+                break
+            }
         }
         
         var menuChildren: [UIMenuElement] = []
@@ -172,6 +227,8 @@ class VetProfilePageViewController: UIViewController {
         button.changesSelectionAsPrimaryAction = true
         button.frame = CGRect(x: 95, y: 177, width: 40, height: 40)
         self.view.addSubview(button)
+        
+        getStatus(token: token ?? "")
     }
     
     func AutoLayout(){
@@ -217,7 +274,30 @@ class VetProfilePageViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    @objc func logoutButtonTapped(){        navigationController?.setViewControllers([WelcomePageViewController()], animated: true)
+    @objc func logoutButtonTapped(){        
+        navigationController?.setViewControllers([WelcomePageViewController()], animated: true)
+    }
+    
+    func getStatus(token: String){
+        NetworkManager.shared.getStatus(token: token) { result in
+            DispatchQueue.main.async {
+                switch result{
+                case .success(let status):
+                    print("success")
+                    switch status.status{
+                    case "Online":
+                        self.button.setTitle("🟢", for: .normal)
+                    case "Offline":
+                        self.button.setTitle("⛔️", for: .normal)
+                    case "Occupied":
+                        self.button.setTitle("🟡", for: .normal)
+                    default: break
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
     }
     
 }

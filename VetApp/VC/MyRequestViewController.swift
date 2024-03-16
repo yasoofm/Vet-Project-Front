@@ -2,29 +2,21 @@ import UIKit
 
 class MyRequestViewController: UITableViewController {
 
+    var token: String?
+    var role: String?
     var requests: [BookRequest] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        getHistory(token: token ?? "", role: role ?? "")
         
-        print(testing)
-
         tableView.register(MyRequestTableViewCell.self, forCellReuseIdentifier: "MyRequestCell")
-
-        let request1 = BookRequest(id: 1, vetName: "Vet. John", CreatedAt: Date(), animal: "Cat")
-        let request2 = BookRequest(id: 2, vetName: "Request 2", CreatedAt: Date(), animal: "Rabbit")
-
-        requests = [request1, request2]
-
-        tableView.reloadData()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadHistory), name: NSNotification.Name(rawValue: "history"), object: nil)
     }
 
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
-    }
 
     override func tableView( _ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return requests.count
@@ -35,16 +27,37 @@ class MyRequestViewController: UITableViewController {
 
         let request = requests[indexPath.row]
         cell.titleLabel.text = request.vetName
-        cell.detailsLabel.text = "Animal: (request.animal)\t\t Date: (request.CreatedAt)"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateString = dateFormatter.string(from: request.CreatedAt ?? Date())
+        cell.detailsLabel.text = "Animal: \(request.animal)\t\t Date: \(dateString)"
 
         // Configure cell with additional details
 
         return cell
     }
+    
+    @objc func reloadHistory(){
+        getHistory(token: self.token ?? "", role: self.role ?? "")
+    }
 
-
-    //TODO
-
+    func getHistory(token: String, role: String){
+        var endPoint = "user/history"
+        if role == "vet"{
+            endPoint = "vet/history"
+        }
+        NetworkManager.shared.getHistory(token: token, endPoint: endPoint) { result in
+            DispatchQueue.main.async {
+                switch result{
+                case .success(let bookRequests):
+                    self.requests = bookRequests
+                    self.tableView.reloadData()
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+    }
 
 }
 

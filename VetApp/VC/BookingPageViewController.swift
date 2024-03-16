@@ -3,13 +3,17 @@ import UIKit
 
 class BookingPageViewController: UIViewController {
     
-    let textField = UITextField()
-    let titleLabel = UILabel()
-    let bookButton = UIButton()
-    let consultationAmountLabel = UILabel()
-    let cashButton = UIButton(type: .system)
-    let cardButton = UIButton(type: .system)
-    let payButton = UIButton()
+    var vet: VetDetails?
+    var token: String?
+    var role: String?
+    
+    private let textField = UITextField()
+    private let titleLabel = UILabel()
+    private let bookButton = UIButton()
+    private let consultationAmountLabel = UILabel()
+    private let cashButton = UIButton(type: .system)
+    private let cardButton = UIButton(type: .system)
+    private let payButton = UIButton()
     
     var selectedButton: UIButton?
     
@@ -91,7 +95,7 @@ class BookingPageViewController: UIViewController {
             cardButton.topAnchor.constraint(equalTo: cashButton.bottomAnchor, constant: 15),
             cardButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
             cardButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
-            cardButton.heightAnchor.constraint(equalToConstant: 40),
+            cardButton.heightAnchor.constraint(equalToConstant: 50),
             
             titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100)
@@ -116,10 +120,26 @@ class BookingPageViewController: UIViewController {
     
     @objc func payButtonTapped(){
      //TODO when i click n pay it hould save in request screen
+        let request = BookRequest(vetId: vet?.id, animal: textField.text ?? "")
+        var endPoint = "user/request"
+        if self.role == "vet"{
+            endPoint = "vet/request"
+        }
+        NetworkManager.shared.bookVet(token: token ?? "", request: request, endpoint: endPoint) { result in
+            DispatchQueue.main.async {
+                switch result{
+                case .success:
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "history"), object: self)
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+        
         let alertController = UIAlertController(title: "Booking confirmed!", message: "Your booking has been successfully confirmed ", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "ok", style: .default) { _ in
             alertController.dismiss(animated: true, completion: nil)
-            self.navigationController?.popToRootViewController(animated: true)
+            self.navigationController?.popViewController(animated: true)
         }
         alertController.addAction(okAction)
         alertController.view.alpha = 0

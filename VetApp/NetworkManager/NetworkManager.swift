@@ -124,8 +124,8 @@ class NetworkManager {
         }
     }
     
-    func addFavorite(token: String, vetId: VetId, completion: @escaping (Result<Void, Error>) -> Void){
-        let url = baseURL + "user/add-favorite"
+    func addFavorite(token: String, vetId: VetId, endPoint: String, completion: @escaping (Result<Void, Error>) -> Void){
+        let url = baseURL + endPoint
         let headers: HTTPHeaders = [.authorization(bearerToken: token)]
         AF.request(url, method: .post, parameters: vetId, encoder: JSONParameterEncoder.default, headers: headers).response { response in
             switch response.result{
@@ -137,10 +137,10 @@ class NetworkManager {
         }
     }
     
-    func deleteFavorite(token: String, vetId: VetId, completion: @escaping (Result<Void, Error>) -> Void){
-        let url = baseURL + "user/remove-favorite"
+    func deleteFavorite(token: String, vetId: VetId, endPoint: String, completion: @escaping (Result<Void, Error>) -> Void){
+        let url = baseURL + endPoint
         let headers: HTTPHeaders = [.authorization(bearerToken: token)]
-        AF.request(url, method: .post, parameters: vetId, encoder: JSONParameterEncoder.default, headers: headers).response { response in
+        AF.request(url, method: .delete, parameters: vetId, encoder: JSONParameterEncoder.default, headers: headers).response { response in
             switch response.result{
             case .success:
                 completion(.success(()))
@@ -150,8 +150,8 @@ class NetworkManager {
         }
     }
     
-    func getFavorites(token: String, completion: @escaping (Result<[VetDetails], Error>) -> Void){
-        let url = baseURL + "user/get-favorite"
+    func getFavorites(token: String, endPoint: String, completion: @escaping (Result<[VetDetails], Error>) -> Void){
+        let url = baseURL + endPoint
         let headers: HTTPHeaders = [.authorization(bearerToken: token)]
         AF.request(url, headers: headers).responseDecodable(of: [VetDetails].self){ response in
             switch response.result{
@@ -172,6 +172,81 @@ class NetworkManager {
         }
     }
     
+    func getStatus(token: String, completion: @escaping (Result<StatusResponse, Error>) -> Void){
+        let url = baseURL + "vet/get-status"
+        let headers: HTTPHeaders = [.authorization(bearerToken: token)]
+        AF.request(url, headers: headers).responseDecodable(of: StatusResponse.self) { response in
+            switch response.result{
+            case .success(let status):
+                // EXTRA LINE FOR DEBUGGING
+                if let data = response.data, let str = String(data: data, encoding: .utf8) {
+                 print("Raw response: \(str)")
+                }
+                completion(.success(status))
+            case .failure(let afError):
+                // EXTRA LINE FOR DEBUGGING
+                if let data = response.data, let str = String(data: data, encoding: .utf8) {
+                 print("Raw response: \(str)")
+                }
+                completion(.failure(afError as Error))
+            }
+        }
+    }
+    
+    func updateStatus(token: String, newStatus: StatusResponse, completion: @escaping (Result<StatusResponse, Error>) -> Void){
+        let url = baseURL + "vet/set-status"
+        let headers: HTTPHeaders = [.authorization(bearerToken: token)]
+        AF.request(url, method: .patch, parameters: newStatus, encoder: JSONParameterEncoder.default, headers: headers).responseDecodable(of: StatusResponse.self) { response in
+            switch response.result{
+            case .success(let status):
+                // EXTRA LINE FOR DEBUGGING
+                if let data = response.data, let str = String(data: data, encoding: .utf8) {
+                 print("Raw response: \(str)")
+                }
+                completion(.success(status))
+            case .failure(let afError):
+                // EXTRA LINE FOR DEBUGGING
+                if let data = response.data, let str = String(data: data, encoding: .utf8) {
+                 print("Raw response: \(str)")
+                }
+                completion(.failure(afError as Error))
+            }
+        }
+    }
+    
+    func getHistory(token: String, endPoint: String, completion: @escaping (Result<[BookRequest], Error>) -> Void){
+        let url = baseURL + endPoint
+        let headers: HTTPHeaders = [.authorization(bearerToken: token)]
+        AF.request(url, headers: headers).responseDecodable(of: [BookRequest].self) { response in
+            switch response.result{
+            case .success(let bookRequests):
+                // EXTRA LINE FOR DEBUGGING
+                if let data = response.data, let str = String(data: data, encoding: .utf8) {
+                 print("Raw response: \(str)")
+                }
+                completion(.success(bookRequests))
+            case .failure(let afError):
+                // EXTRA LINE FOR DEBUGGING
+                if let data = response.data, let str = String(data: data, encoding: .utf8) {
+                 print("Raw response: \(str)")
+                }
+                completion(.failure(afError as Error))
+            }
+        }
+    }
+    
+    func bookVet(token: String, request: BookRequest, endpoint: String, completion: @escaping (Result<Void, Error>) -> Void){
+        let url = baseURL + endpoint
+        let headers: HTTPHeaders = [.authorization(bearerToken: token)]
+        AF.request(url, method: .post, parameters: request, encoder: JSONParameterEncoder.default, headers: headers).response { response in
+            switch response.result{
+            case .success:
+                completion(.success(()))
+            case .failure(let afError):
+                completion(.failure(afError as Error))
+            }
+        }
+    }
     //Post Method: For users to post request.
 //    func userPostRequest(token: String, user: User, completion: @escaping (Result<Void, Error>) -> Void){
 //        let url = baseURL + "user/request"

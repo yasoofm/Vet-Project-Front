@@ -20,43 +20,54 @@ class MainTabBarController: UITabBarController {
         
         tabBar.tintColor = .orange
         tabBar.unselectedItemTintColor = .orange
-        
+        navigationItem.hidesBackButton = true
     }
     
     func setupViewControllers() {
         
         let homeViewController = HomeViewController()
-        homeViewController.email = info?.email
         homeViewController.token = info?.token
-        homeViewController.equipment = info?.equipment
-        homeViewController.experience = info?.experience
         homeViewController.id = info?.id
-        homeViewController.image = info?.image
         homeViewController.name = info?.name
-        homeViewController.phoneNumber = info?.phoneNumber
         homeViewController.role = info?.role
-        homeViewController.username = info?.username
         homeViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
         homeViewController.tabBarItem = UITabBarItem(title: "home", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house.fill"))
         
         let favouriteViewController = FavouriteViewController()
+        favouriteViewController.token = info?.token
+        favouriteViewController.role = info?.role
         favouriteViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
         favouriteViewController.tabBarItem = UITabBarItem(title: "favourite", image: UIImage(systemName: "heart"), selectedImage: UIImage(systemName: "heart.fill"))
         
         let myRequestViewController = MyRequestViewController()
-        
+        myRequestViewController.token = info?.token
+        myRequestViewController.role = info?.role
         myRequestViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
         myRequestViewController.tabBarItem = UITabBarItem(title: "requests", image: UIImage(systemName: "arrow.down.message"), selectedImage: UIImage(systemName: "arrow.down.message.fill"))
         
         var profileViewController: UIViewController?
         if info?.role == "user" {
-            profileViewController = UserProfilePageViewController()
-            profileViewController?.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
-            profileViewController?.tabBarItem = UITabBarItem(title: "user profile", image: UIImage(systemName: "person.crop.circle"), selectedImage: UIImage(systemName: "person.crop.circle.fill"))
+            let userProfileViewController = UserProfilePageViewController()
+            userProfileViewController.username = info?.username
+            userProfileViewController.email = info?.email
+            userProfileViewController.phoneNumber = info?.phoneNumber
+            userProfileViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
+            userProfileViewController.tabBarItem = UITabBarItem(title: "user profile", image: UIImage(systemName: "person.crop.circle"), selectedImage: UIImage(systemName: "person.crop.circle.fill"))
+            profileViewController = userProfileViewController
         } else {
-            profileViewController = VetProfilePageViewController()
-            profileViewController?.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
-            profileViewController?.tabBarItem = UITabBarItem(title: "vet profile", image: UIImage(systemName: "person.crop.circle"), selectedImage: UIImage(systemName: "person.crop.circle.fill"))
+            let vetProfileViewController = VetProfilePageViewController()
+            vetProfileViewController.email = info?.email
+            vetProfileViewController.username = info?.username
+            vetProfileViewController.image = info?.image
+            vetProfileViewController.experience = info?.experience
+            vetProfileViewController.name = info?.name
+            vetProfileViewController.equipment = info?.equipment
+            vetProfileViewController.phoneNumber = info?.phoneNumber
+            vetProfileViewController.speciality = info?.speciality
+            vetProfileViewController.token = info?.token
+            vetProfileViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
+            vetProfileViewController.tabBarItem = UITabBarItem(title: "vet profile", image: UIImage(systemName: "person.crop.circle"), selectedImage: UIImage(systemName: "person.crop.circle.fill"))
+            profileViewController = vetProfileViewController
         }
         viewControllers = [homeViewController, favouriteViewController,  myRequestViewController, profileViewController ?? UserProfilePageViewController()]
     }
