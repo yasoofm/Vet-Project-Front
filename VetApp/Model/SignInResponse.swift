@@ -17,6 +17,7 @@ struct SignInResponse: Codable{
     var equipment: String?
     var experience: Int?
     var phoneNumber: Int64
+    var speciality: String?
 }
 
 

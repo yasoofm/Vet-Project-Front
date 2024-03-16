@@ -4,15 +4,17 @@ import SnapKit
 class VetDetailsViewController: UIViewController {
     
     var vet: VetDetails?
+    var token: String?
+    var role: String?
     
-    let nameLabel = UILabel()
-    let emailLabel = UILabel()
-    let phoneNumberLabel = UILabel()
-    let imageView = UIImageView()
-    let yearsOfExperienceLabel = UILabel()
-    let specielityLabel = UILabel()
-    let equipmentsLabel = UILabel()
-    let bookButton = UIButton()
+    private let nameLabel = UILabel()
+    private let emailLabel = UILabel()
+    private let phoneNumberLabel = UILabel()
+    private let imageView = UIImageView()
+    private let yearsOfExperienceLabel = UILabel()
+    private let specielityLabel = UILabel()
+    private let equipmentsLabel = UILabel()
+    private let bookButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,6 +106,9 @@ class VetDetailsViewController: UIViewController {
     
     @objc func bookButtonTapped(){
         let bookingVC = BookingPageViewController()
+        bookingVC.vet = self.vet
+        bookingVC.role = self.role
+        bookingVC.token = self.token
         navigationController?.pushViewController(bookingVC, animated: true)
     }
     

@@ -56,7 +56,10 @@ class UserProfilePageViewController: UIViewController {
     }()
     
     let logoutButton = UIButton(type: .system)
-   
+    var image: String?
+    var username: String?
+    var email: String?
+    var phoneNumber: Int64?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +70,10 @@ class UserProfilePageViewController: UIViewController {
         view.addSubview(emailLabel)
         view.addSubview(phoneNumberLabel)
         view.addSubview(logoutButton)
+        
+        emailLabel.text = "Email: \(email ?? "")"
+        usernameLabel.text = username
+        phoneNumberLabel.text = "Phone Number: \(phoneNumber ?? 0)"
         
         logoutButton.addTarget(self, action: #selector(logoutButtonTapped), for: .touchUpInside)
         logoutButton.setTitle("Logout", for: .normal)
