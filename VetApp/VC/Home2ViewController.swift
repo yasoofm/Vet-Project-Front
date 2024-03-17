@@ -108,7 +108,7 @@ class Home2TableViewCell: UITableViewCell {
  
     let nameLabel = UILabel()
     let specielityLabel = UILabel()
-    let statusLabel = UILabel()
+    let statusLabel = UILabel() // New label for status
     let accountImageView = UIImageView()
     let favoriteButton = UIButton(type: .system)
     
@@ -118,14 +118,11 @@ class Home2TableViewCell: UITableViewCell {
         contentView.addSubview(nameLabel)
         contentView.addSubview(specielityLabel)
         contentView.addSubview(accountImageView)
-        contentView.addSubview(statusLabel)
+        contentView.addSubview(statusLabel) // Add status label
         contentView.addSubview(favoriteButton)
        
         setupViews()
         setupConstraints()
-        
-        favoriteButton.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
-            
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -148,12 +145,10 @@ class Home2TableViewCell: UITableViewCell {
         accountImageView.contentMode = .scaleAspectFit
     
         let symbolConfig = UIImage.SymbolConfiguration(pointSize: 13, weight: .medium, scale: .medium)
-        let symbolImage = UIImage(systemName: "star", withConfiguration: symbolConfig)
+        let symbolImage = UIImage(systemName: "star.fill", withConfiguration: symbolConfig)
         favoriteButton.setImage(symbolImage, for: .normal)
-        favoriteButton.tintColor = .orange
-        let symbolImage2 = UIImage(systemName: "star.fill", withConfiguration: symbolConfig)
-        favoriteButton.setImage(symbolImage2, for: .selected)
-          
+        favoriteButton.tintColor = .white
+        favoriteButton.backgroundColor = .orange
     }
     
     private func setupConstraints() {
@@ -189,8 +184,4 @@ class Home2TableViewCell: UITableViewCell {
             make.width.height.equalTo(30)
         }
     }
-    @objc private func favoriteButtonTapped() {
-           favoriteButton.isSelected = !favoriteButton.isSelected
-
-       }
 }
