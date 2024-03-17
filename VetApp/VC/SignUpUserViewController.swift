@@ -55,7 +55,7 @@ class SignUpUserViewController: FormViewController {
                     }
                 }
             }
-            <<< TextRow() { row in
+            <<< PasswordRow() { row in
                 row.title = "Password"
                 row.placeholder = "Enter Password"
                 row.tag = "password"

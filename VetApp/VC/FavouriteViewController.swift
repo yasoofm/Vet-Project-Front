@@ -26,7 +26,7 @@ class FavouriteViewController: UITableViewController {
             let favoriteVet = favoriteVets[indexPath.row]
             //cell.accountImageView.kf.setImage(with: URL(string: image))
             cell.nameLabel.text = "Name: \(favoriteVet.name) "
-            cell.specielityLabel.text = "Specialty: \(favoriteVet.speciality)"
+            cell.specielityLabel.text = "Speciality: \(favoriteVet.speciality)"
             cell.statusLabel.text = "🟢"
             cell.accountImageView.image = UIImage(named: "vet")
             cell.favoriteButton.tag = indexPath.row

@@ -62,7 +62,7 @@ class SignUpVetViewController: FormViewController {
                 }
             }
             
-            <<< IntRow() { row in
+            <<< PhoneRow() { row in
                 row.title = "Phone Number"
                 row.placeholder = "Enter Phone Number"
                 row.tag = "phoneNumber"
@@ -136,7 +136,7 @@ class SignUpVetViewController: FormViewController {
                 }
             }
     
-            <<< TextRow() { row in
+            <<< PasswordRow() { row in
                 row.title = "Password"
                 row.placeholder = "Enter Password"
                 row.tag = "password"

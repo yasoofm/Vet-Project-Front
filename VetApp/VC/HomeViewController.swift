@@ -25,7 +25,7 @@ class HomeViewController: UITableViewController {
         let vet = vets[indexPath.row]
         cell.accountImageView.kf.setImage(with: URL(string: vet.image))
         cell.nameLabel.text = "Name: \(vet.name) "
-        cell.specielityLabel.text = " \(vet.speciality)"
+        cell.specielityLabel.text = "Speciality: \(vet.speciality)"
         cell.statusLabel.text = "\(vet.status)"
         cell.accountImageView.image = UIImage(named: "\(vet.image)")
         cell.favoriteButton.tag = indexPath.row

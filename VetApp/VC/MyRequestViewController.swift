@@ -11,9 +11,12 @@ class MyRequestViewController: UITableViewController {
         tableView.register(MyRequestTableViewCell.self, forCellReuseIdentifier: "MyRequestCell")
 
         let request1 = BookRequest(id: 1, vetName: "Vet. John", CreatedAt: Date(), animal: "Cat")
-        let request2 = BookRequest(id: 2, vetName: "Request 2", CreatedAt: Date(), animal: "Rabbit")
+        let request2 = BookRequest(id: 2, vetName: "Vet. James", CreatedAt: Date(), animal: "Rabbit")
+        let request3 = BookRequest(id: 2, vetName: "Vet. Herriot", CreatedAt: Date(), animal: "Dog")
+        let request4 = BookRequest(id: 2, vetName: "Vet. Max", CreatedAt: Date(), animal: "Hamster")
+        let request5 = BookRequest(id: 2, vetName: "Vet. Zoe", CreatedAt: Date(), animal: "Turtle")
 
-        requests = [request1, request2]
+        requests = [request1, request2, request3, request4, request5]
 
         tableView.reloadData()
     }
@@ -33,7 +36,13 @@ class MyRequestViewController: UITableViewController {
 
         let request = requests[indexPath.row]
         cell.titleLabel.text = request.vetName
-        cell.detailsLabel.text = "Animal: (request.animal)\t\t Date: (request.CreatedAt)"
+        
+        let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "d MMM, yyyy HH:mm"
+            let formattedDate = dateFormatter.string(from: request.CreatedAt)
+            
+            cell.detailsLabel.text = "Animal: \(request.animal)\t\t Date: \(formattedDate)"
+
 
         // Configure cell with additional details
 
